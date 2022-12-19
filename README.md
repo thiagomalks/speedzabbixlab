@@ -1,0 +1,1 @@
+Speed Zabbix Lowcost Install
