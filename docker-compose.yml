@@ -1,0 +1,58 @@
+services:
+  postgres-server-14:
+    image: postgres:14.2-bullseye
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_INITDB_ARGS="--auth=md5"
+      - TZ=Etc/UTC
+    ports:
+      - 5432:5432
+    volumes:
+      - /postgresql-14/data:/var/lib/postgresql/data
+      - /tmp/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
+
+  zabbix-server-pgsql:
+    image: zabbix/zabbix-server-pgsql:6.0.6-ubuntu
+    restart: always
+    environment:
+      - DB_SERVER_HOST=postgres-server-14
+      - POSTGRES_USER=zabbix
+      - POSTGRES_PASSWORD=ZabbixLab
+      - POSTGRES_DB=zabbix_db
+      - DB_SERVER_PORT=5432
+    ports:
+      - 10051:10051
+    volumes:
+      - /zabbix-server-pgsql/externalscripts:/usr/lib/zabbix/externalscripts:ro
+
+
+  zabbix-web-nginx-pgsql:
+    image: zabbix/zabbix-web-nginx-pgsql:6.0.6-ubuntu
+    restart: always
+    environment:
+      - PHP_TZ=Etc/UTC
+      - /etc/localtime:/etc/localtime:ro
+      - ZBX_SERVER_NAME=ZBBX LAB
+      - ZBX_SERVER_HOST=zabbix-server-pgsql
+      - DB_SERVER_HOST=postgres-server-14
+      - POSTGRES_USER=zabbix
+      - POSTGRES_PASSWORD=ZabbixLab
+      - POSTGRES_DB=zabbix_db
+      - DB_SERVER_PORT=5432
+    ports:
+      - 443:8443
+      - 80:8080
+
+  zabbix-agent:
+    image: zabbix/zabbix-agent2:6.0.6-ubuntu
+    restart: always
+    privileged: true
+    environment:
+      - ZBX_HOSTNAME=zabbix-server-pgsql
+      - ZBX_SERVER_HOST=zabbix-server-pgsql
+      - ZBX_ACTIVE_ALLOW=false
+    ports:
+    - 10050:10050
