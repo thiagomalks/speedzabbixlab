@@ -1,6 +1,6 @@
 services:
   postgres-server-14:
-    image: postgres:14.2-bullseye
+    image: postgres:14.6-bullseye
     restart: always
     environment:
       - POSTGRES_USER=postgres
@@ -15,7 +15,7 @@ services:
       - /tmp/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
 
   zabbix-server-pgsql:
-    image: zabbix/zabbix-server-pgsql:6.0.6-ubuntu
+    image: zabbix/zabbix-server-pgsql:6.0.12-ubuntu
     restart: always
     environment:
       - DB_SERVER_HOST=postgres-server-14
@@ -30,7 +30,7 @@ services:
 
 
   zabbix-web-nginx-pgsql:
-    image: zabbix/zabbix-web-nginx-pgsql:6.0.6-ubuntu
+    image: zabbix/zabbix-web-nginx-pgsql:6.0.12-ubuntu
     restart: always
     environment:
       - PHP_TZ=Etc/UTC
@@ -47,7 +47,7 @@ services:
       - 80:8080
 
   zabbix-agent:
-    image: zabbix/zabbix-agent2:6.0.6-ubuntu
+    image: zabbix/zabbix-agent2:6.0.12-ubuntu
     restart: always
     privileged: true
     environment:
