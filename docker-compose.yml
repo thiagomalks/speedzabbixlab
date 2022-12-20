@@ -56,3 +56,4 @@ services:
       - ZBX_ACTIVE_ALLOW=false
     ports:
     - 10050:10050
+    
