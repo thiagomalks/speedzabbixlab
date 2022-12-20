@@ -6,3 +6,7 @@
 <p>Ap&oacute;s instala&ccedil;&atilde;o, acesse o Zabbix pelo navegador utilizando o IP do servidor de instala&ccedil;&atilde;o.</p>
 <p>Se aparecer uma mensagem de erro de conexão com o banco, é por que este ainda está sendo populado. Aguarde até 5 minutos</p>
 <p>User: Admin<br />Pass: zabbix</p>
+<p><strong>Diret&oacute;rios Principais da Instala&ccedil;&atilde;o</strong></p>
+<p>Docker Compose: /home/zabbix</p>
+<p>PostgreSQL: /postgresql-14</p>
+<p>Zabbix Server files: /zabbix-server-pgsql</p>
