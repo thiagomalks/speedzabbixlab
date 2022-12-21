@@ -6,6 +6,7 @@
 ````
 git clone https://github.com/thiagomalks/speedzabbixlab
 ````
+````
 ./install.sh
 ````
 <p>Itens da Instala&ccedil;&atilde;o:<br />1 - Docker Engine CE<br />2 - Zabbix Server PSQL 6.0.12<br />3 - Zabbix Web Nginx 6.0.12<br />4 - Zabbix Agent2 6.6.12<br />5 - PostgreSQL 14-6</p>
