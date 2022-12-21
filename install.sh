@@ -34,7 +34,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 mkdir -p /home/zabbix && cp docker-compose.yml $_
 
 #criando o diretório do PostgreSQL e movendo os arquivos
-cp init-user-db.sh /tmp/init-user-db.sh
+cp ./postgresql/init-user-db.sh /tmp/init-user-db.sh
 
 #iniciando os Containeres
 docker-compose -f /home/zabbix/docker-compose.yml  up -d
