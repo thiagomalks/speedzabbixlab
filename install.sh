@@ -37,4 +37,4 @@ mkdir -p /home/zabbix && cp docker-compose.yml $_
 cp ./postgresql/init-user-db.sh /tmp/init-user-db.sh
 
 #iniciando os Containeres
-docker-compose -f /home/zabbix/docker-compose.yml  up -d
+docker compose -f /home/zabbix/docker-compose.yml  up -d
