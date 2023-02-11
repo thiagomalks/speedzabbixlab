@@ -16,5 +16,4 @@ git clone https://github.com/thiagomalks/speedzabbixlab
 <p>Após logar, vá em Configuration - Hosts , selecione o host Zabbix server<br> no Agent, mude para DNS e coloque zabbix-agent no campo DNS name, para que o agent do zabbix fique ativado </p>
 <p><strong>Diret&oacute;rios Principais da Instala&ccedil;&atilde;o</strong></p>
 <p>Docker Compose: /home/zabbix</p>
-<p>PostgreSQL: /postgresql-14</p>
-<p>Zabbix Server files: /zabbix-server-pgsql</p>
+<p>PostgreSQL e Zabbix persistent files: /opt/</p>
